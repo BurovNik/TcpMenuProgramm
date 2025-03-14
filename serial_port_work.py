@@ -1,17 +1,17 @@
 import serial
 
-def read_all_data_from_port(ser: serial.Serial)-> str:
+def read_all_data_from_port(ser)-> str:
     answer = ser.read_all()
     return str(answer)
 
-def send_command_to_port(ser: serial.Serial, command):
+def send_command_to_port(ser, command):
     try:
         ser.write(command.encode('ascii') + b'\r\n')
     except Exception as e:
         print(f"Ошибка отправки команды: {e}")
     return
 
-def work_with_port(ser: serial.Serial):
+def work_with_port(ser):
     while True:
         print('------------------------------------------')
         print(f'Начало работы с портом {ser}')
